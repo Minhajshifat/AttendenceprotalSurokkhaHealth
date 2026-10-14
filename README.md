@@ -1,37 +1,38 @@
-🏢 SUROKKHA WORKFORCE
+SUROKKHA ATTENDANCE PORTAL
 
-Smart Employee Attendance Management System
+Employee Attendance Management System
 
-A modern, location-aware employee attendance management system built with Flutter and Firebase to simplify employee check-in/check-out, QR-based attendance verification, team management, and HR reporting.
+A location-aware employee attendance management system built with Flutter and Firebase for SUROKKHA HEALTH. The application enables employees and Team Leads to submit attendance, record GPS coordinates and timestamps, monitor team attendance, and manage attendance approvals through an HR/Admin workflow.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Flutter-Framework-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"/>
-  <img src="https://img.shields.io/badge/Dart-Language-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart"/>
-  <img src="https://img.shields.io/badge/Firebase-Backend-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase"/>
-  <img src="https://img.shields.io/badge/Cloud-Firestore-FF6F00?style=for-the-badge&logo=firebase&logoColor=white" alt="Cloud Firestore"/>
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"/>
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart"/>
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase"/>
+  <img src="https://img.shields.io/badge/Cloud_Firestore-FF6F00?style=for-the-badge&logo=firebase&logoColor=white" alt="Cloud Firestore"/>
+  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20Web-4CAF50?style=for-the-badge" alt="Android and Web"/>
 </p>
 
 ⸻
 
-📌 Table of Contents
+📑 Table of Contents
 
 * Overview
 * Project Objectives
 * Key Features
 * User Roles
+* Attendance Workflow
 * Technology Stack
 * System Architecture
-* Attendance Workflow
 * Project Structure
-* Database Design
-* Prerequisites
+* Firebase and Database
 * Installation and Setup
 * Firebase Configuration
 * Running the Application
-* Attendance Reports and Excel Export
-* Security Considerations
-* Future Enhancements
+* Attendance Records and Reporting
+* Security and Data Integrity
+* Testing
 * Troubleshooting
+* Future Enhancements
 * Contributing
 * License
 * Contact
@@ -40,216 +41,227 @@ A modern, location-aware employee attendance management system built with Flutte
 
 📖 Overview
 
-SUROKKHA WORKFORCE is an employee attendance management portal designed for organizations with multiple teams, team leaders, field executives, and HR administrators.
+SUROKKHA Attendance Portal is an employee attendance management application developed for SUROKKHA HEALTH to digitize workforce attendance and simplify team-level monitoring.
 
-The system aims to replace manual attendance registers and spreadsheets with a centralized digital platform.
+The system is designed for an organization with office staff, field executives, and Team Leads working across different locations. Employees can sign in, submit attendance, and provide their device location for attendance verification. Attendance submissions can then be reviewed by authorized HR or administrative personnel.
 
-Team leaders can generate time-limited QR codes for attendance verification. Employees can scan valid QR codes to check in or check out, subject to configured attendance rules. Location information can be recorded to support field attendance verification.
+The application uses Flutter for cross-platform development and Firebase for authentication and cloud data storage.
 
-The application uses Firebase Authentication for user authentication and Cloud Firestore for cloud-based data storage.
+The web version allows employees using iPhones and other supported devices to access the application through a web browser, while Android devices can use the Android application.
 
-The system is designed for organizations managing approximately 11–50 employees, with the flexibility to support larger teams as the application evolves.
+Project Information
 
-🎯 Primary Use Cases
-
-* Daily employee attendance management.
-* Field employee attendance tracking.
-* Team-based attendance supervision.
-* QR-based check-in and check-out.
-* HR attendance monitoring and approval.
-* Monthly attendance reporting and Excel exports.
+Item	Details
+Project Name	SUROKKHA Attendance Portal
+Organization	SUROKKHA HEALTH
+Project Type	Employee Attendance Management System
+Frontend	Flutter
+Programming Language	Dart
+Backend Services	Firebase
+Database	Cloud Firestore
+Supported Platforms	Android and Web
+Primary Users	Employees, Team Leads, HR/Admin
 
 ⸻
 
 🎯 Project Objectives
 
-1. Digitize employee attendance and reduce manual recordkeeping.
-2. Enable team leaders to manage attendance for their assigned teams.
-3. Introduce QR-based attendance verification.
-4. Record attendance timestamps and, where permitted, location information.
-5. Provide HR and management with centralized attendance records.
-6. Simplify monthly attendance calculations and reporting.
-7. Improve transparency, accountability, and operational efficiency.
+* Digitize employee check-in and attendance management.
+* Record attendance timestamps and GPS location information.
+* Support attendance management for field executives and office employees.
+* Allow Team Leads to monitor attendance within their assigned teams.
+* Enable HR/Admin to review, approve, or reject attendance submissions.
+* Maintain centralized attendance history in the cloud.
+* Improve attendance transparency and administrative efficiency.
+* Reduce dependence on manual attendance registers and spreadsheets.
 
 ⸻
 
 ✨ Key Features
 
-1. 🔐 Authentication and Access Control
+1. 🔐 User Authentication
 
-* Firebase Email/Password authentication.
-* Secure sign-in and sign-out.
-* Role-based access for employees, team leaders, and HR administrators.
-* User profile and employee identification.
-* Access restrictions based on user roles.
+* Firebase Authentication for user sign-in.
+* Authenticated access to the attendance application.
+* User identification through employee account information.
+* Role-based application interfaces for different user types.
 
+2. 📍 Location-Based Attendance
 
-2. 📍 Location-Aware Attendance
+* Employees submit attendance through the application.
+* Device GPS coordinates can be captured during attendance submission.
+* Attendance timestamps are recorded with the submission.
+* Location information can be reviewed by authorized personnel.
+* Recorded coordinates can be opened in Google Maps for location inspection.
 
-* Capture the employee’s device location when submitting attendance, subject to permission.
-* Store latitude and longitude with attendance records when enabled.
-* Record location accuracy when available.
-* Support field-team attendance verification.
-* Allow authorized HR personnel to review recorded attendance information.
+Location capture depends on device permissions, GPS availability, and network conditions. GPS information should be treated as supporting evidence rather than conclusive proof of physical presence.
 
-Note: GPS coordinates alone do not guarantee that an employee is physically present at a claimed location. Additional verification and server-side validation may be required.
+3. 🕒 Check-In and Attendance Submission
 
-3. 👥 Employee and Team Management
+* Employees sign in and access their attendance dashboard.
+* Employees submit their attendance through the check-in workflow.
+* The application captures available location and time information.
+* Attendance submissions enter the configured review workflow.
+* Submission status can be displayed to the employee.
 
-* Maintain employee profiles and employee IDs.
-* Organize employees into teams and departments.
-* Assign team leaders.
-* Associate attendance sessions with the appropriate teams.
-* Manage employee account status and role permissions.
+4. 👥 Team Lead Attendance
 
-4. 📊 Attendance Dashboard
+* Team Leads can submit their own attendance.
+* Team Leads can monitor attendance information for their assigned teams.
+* Team-level attendance information supports workforce supervision.
+* Team Leads can review relevant attendance records through their dashboard.
 
-The dashboard is intended to provide an overview of:
+5. 🧑‍💼 HR/Admin Attendance Approval
 
-* Total employees.
-* Present employees.
-* Absent employees.
-* Late arrivals.
-* Check-in and check-out times.
-* Team-wise attendance.
-* Daily and monthly attendance summaries.
+* Review submitted attendance records.
+* Approve or reject attendance submissions.
+* Monitor employee and team attendance.
+* Inspect recorded timestamps and location information.
+* Maintain oversight of attendance submissions.
 
-Dashboard figures depend on the attendance records and calculation rules configured in the application.
+Administrative access and approval permissions must be enforced through appropriate authorization controls.
 
-5. 🗓️ Attendance History
+6. 📊 Attendance Dashboard
 
-* View daily attendance records.
-* Filter records by date, employee, or team.
-* Review check-in and check-out timestamps.
-* Identify incomplete attendance records.
-* Maintain historical attendance data for reporting.
+The dashboard supports attendance monitoring through information such as:
 
-6. 📥 Excel Attendance Reports
+* Employee attendance status.
+* Check-in time.
+* Team-wise attendance information.
+* Pending attendance submissions.
+* Approved and rejected attendance records, where available.
+* Recorded employee location information.
 
-* Export attendance records to Excel.
-* Generate date-wise and employee-wise reports.
-* Support monthly attendance summaries.
-* Include employee ID, name, designation, reporting time, checkout time, attendance status, and team leader where available.
-* Preserve historical attendance records for administrative reference.
+The exact dashboard metrics depend on the current implementation.
 
-Excel export availability depends on the implementation of the reporting module.
+7. 🗂️ Attendance History
 
-7. 🧑‍💼 HR and Management Controls
+* Maintain attendance records in Cloud Firestore.
+* Retrieve attendance history for review.
+* Support team and employee attendance monitoring.
+* Preserve historical attendance information when employee accounts are deactivated, subject to the application’s data-retention rules.
 
-* Review attendance records.
-* Monitor team attendance.
-* Handle attendance correction requests where supported.
-* Review exceptional or incomplete records.
-* Maintain centralized reporting for management.
+8. 📥 Attendance Reporting
 
-8. ☁️ Cloud-Based Data Management
+The project includes work on attendance reporting and Excel-based record management.
 
-* Firebase Authentication for identity management.
-* Cloud Firestore for application data.
-* Shared backend for supported Android and web clients.
-* Cloud-hosted data accessible to authorized users.
+Reporting requirements include:
+
+* Employee name and ID.
+* Designation.
+* Check-in and check-out time, where recorded.
+* Attendance status.
+* Team name.
+* Team Lead name.
+* Date-wise and monthly attendance summaries.
+
+Automated reports and complete Excel export functionality should be considered available only to the extent implemented in the current codebase.
 
 ⸻
 
 👤 User Roles
 
 Role	Responsibilities
-Employee / Executive	Sign in, scan attendance QR codes, submit check-in/check-out, and view permitted personal attendance records.
-Team Leader (TL)	Manage assigned team attendance sessions, generate QR codes, and monitor team attendance.
-HR Administrator	Manage employee records, review attendance, and access authorized reports.
-Management	Review organization-wide attendance summaries and management reports.
+Employee / Executive	Sign in, submit attendance, provide location permission, and access permitted attendance information.
+Team Lead (TL)	Submit personal attendance and monitor attendance for the assigned team.
+HR / Admin	Review attendance submissions, approve or reject records, and monitor employee attendance.
+Super Admin	Manage system-wide administration and access permissions, where implemented.
 
-Role permissions must be enforced by the application and Firebase Security Rules, not merely by hiding buttons in the user interface.
-
-⸻
-
-🛠️ Technology Stack
-
-Technology	Purpose
-Flutter	Cross-platform application development
-Dart	Application programming language
-Firebase Authentication	User authentication
-Cloud Firestore	NoSQL cloud database
-Provider	State management
-GoRouter	Application navigation and routing
-Geolocator	Device location access
-QR code generation/scanning packages	QR-based attendance
-Excel package	Spreadsheet export
-Intl	Date and time formatting
-UUID	Unique identifiers where needed
-Fluttertoast	User feedback messages
-
-Additional packages may be required depending on the implemented QR generation, scanning, and reporting features.
-
-⸻
-
-🏗️ System Architecture
-
-The application follows a Flutter client and Firebase backend architecture.
-
-                 ┌───────────────────────┐
-                 │   Flutter Application │
-                 │   Android / Web       │
-                 └───────────┬───────────┘
-                             │
-                ┌────────────┴────────────┐
-                │                         │
-       ┌────────▼────────┐      ┌─────────▼────────┐
-       │ Firebase Auth   │      │ Application UI   │
-       │ User Identity   │      │ Provider/GoRouter│
-       └─────────────────┘      └─────────┬────────┘
-                                          │
-                               ┌──────────▼──────────┐
-                               │ Attendance Services │
-                               │ QR / Location / Data│
-                               └──────────┬──────────┘
-                                          │
-                               ┌──────────▼──────────┐
-                               │   Cloud Firestore   │
-                               │ Employees / Teams / │
-                               │ Attendance / Config │
-                               └─────────────────────┘
-
-Important: Sensitive attendance operations, QR validation, and permission checks should be enforced through trusted backend logic or appropriately secured Firestore operations. A client-side diagram does not imply that a separate backend service has already been implemented.
+Each role should have access only to the functions and records authorized for that role.
 
 ⸻
 
 🔄 Attendance Workflow
 
-Employee Check-In
+The attendance process follows a direct application-based workflow without QR-code scanning.
 
-1. The employee signs in to the application.
-2. The team leader generates an attendance QR code for an authorized session.
-3. The employee scans the QR code.
-4. The application validates the session and its validity period.
-5. The application requests location permission if location verification is enabled.
-6. The attendance submission is validated against the employee’s identity and attendance rules.
-7. The check-in timestamp and permitted location information are recorded.
-8. The attendance status is displayed to the employee and authorized administrators.
+Employee Attendance Submission
 
-Employee Check-Out
+1. The employee opens the SUROKKHA Attendance Portal.
+2. The employee signs in using their registered account.
+3. The employee opens the attendance dashboard.
+4. The employee initiates the attendance check-in process.
+5. The application captures the available timestamp and GPS coordinates, subject to device permissions.
+6. The attendance submission is saved to the Firebase-backed system.
+7. The submission appears as pending review when approval is required.
+8. HR/Admin reviews the submitted attendance.
+9. HR/Admin approves or rejects the submission.
+10. The resulting status is reflected in the attendance records.
 
-1. The employee scans the appropriate valid QR code or follows the configured checkout process.
-2. The system verifies the employee’s existing attendance record.
-3. The checkout timestamp is recorded.
-4. Working hours are calculated according to the configured rules.
-5. The updated record becomes available to authorized reporting users.
+Team Lead Workflow
 
-HR Review
+1. The Team Lead signs in to the application.
+2. The Team Lead submits their own attendance.
+3. The Team Lead views attendance information for the assigned team.
+4. The Team Lead monitors relevant attendance submissions.
 
-1. HR opens the attendance dashboard.
-2. Attendance is filtered by date, team, or employee.
-3. Exceptional or incomplete records are reviewed.
-4. Corrections or approvals are handled through the available administrative workflow.
-5. Reports are exported when required.
+HR/Admin Workflow
+
+1. HR/Admin signs in using an authorized account.
+2. The administrator opens the attendance management dashboard.
+3. The administrator reviews pending submissions.
+4. The administrator checks available timestamps and location information.
+5. The administrator approves or rejects submissions.
+6. Attendance records remain available for authorized monitoring and reporting.
+
+⸻
+
+🛠️ Technology Stack
+
+Technology / Package	Purpose
+Flutter	Cross-platform user interface
+Dart	Application programming language
+Firebase Authentication	User authentication
+Cloud Firestore	Cloud database
+Provider	State management
+GoRouter	Navigation and routing
+Geolocator	GPS and device location access
+Intl	Date and time formatting
+Excel	Spreadsheet processing and export
+FlutterFire CLI	Firebase configuration for Flutter
+
+⸻
+
+🏗️ System Architecture
+
+The application uses a Flutter client connected to Firebase services.
+
+                 ┌─────────────────────────┐
+                 │   SUROKKHA Attendance   │
+                 │        Portal            │
+                 └────────────┬────────────┘
+                              │
+                   ┌──────────┴──────────┐
+                   │                     │
+          ┌────────▼────────┐   ┌────────▼────────┐
+          │ Android App     │   │ Flutter Web     │
+          │ Employees / TL  │   │ Employees / HR  │
+          └────────┬────────┘   └────────┬────────┘
+                   │                     │
+                   └──────────┬──────────┘
+                              │
+                   ┌──────────▼──────────┐
+                   │ Firebase Services   │
+                   ├─────────────────────┤
+                   │ Authentication      │
+                   │ Cloud Firestore     │
+                   └──────────┬──────────┘
+                              │
+                   ┌──────────▼──────────┐
+                   │ Attendance Records  │
+                   │ Employee / Team Data│
+                   │ Review Status        │
+                   └─────────────────────┘
+
+The architecture diagram describes the intended logical flow. Sensitive authorization and attendance-integrity checks must be enforced by Firebase Security Rules and trusted backend logic where required.
 
 ⸻
 
 📂 Project Structure
 
-The following is a recommended structure. Adjust the names to match the actual files in your repository.
+The following is a recommended Flutter project structure. The exact directory and file names should match the actual repository.
 
-surokkha_workforce/
+surokkha_attendance/
 │
 ├── android/
 ├── ios/
@@ -258,8 +270,7 @@ surokkha_workforce/
 │
 ├── assets/
 │   ├── images/
-│   ├── icons/
-│   └── fonts/
+│   └── icons/
 │
 ├── lib/
 │   ├── main.dart
@@ -267,8 +278,8 @@ surokkha_workforce/
 │   │
 │   ├── models/
 │   │   ├── employee_model.dart
-│   │   ├── team_model.dart
-│   │   └── attendance_model.dart
+│   │   ├── attendance_model.dart
+│   │   └── team_model.dart
 │   │
 │   ├── services/
 │   │   ├── attendance_service.dart
@@ -283,33 +294,38 @@ surokkha_workforce/
 │   │   ├── auth/
 │   │   ├── employee/
 │   │   ├── team_leader/
-│   │   ├── hr/
+│   │   ├── admin/
 │   │   └── dashboard/
 │   │
 │   ├── routes/
 │   │   └── app_router.dart
 │   │
 │   ├── widgets/
-│   │
 │   └── utils/
 │
 ├── test/
-├── .gitignore
 ├── pubspec.yaml
 ├── pubspec.lock
+├── .gitignore
 └── README.md
 
 ⸻
 
-🗄️ Database Design
+🔥 Firebase and Database
 
-Cloud Firestore is used as the primary database.
+The application uses Firebase Authentication and Cloud Firestore for authentication and cloud-based attendance data management.
 
-The following collections represent a recommended logical data model. Actual collection names and fields may differ according to the implementation.
+Firebase Authentication
 
-1. users
+Firebase Authentication manages user sign-in and identity.
 
-Stores account information and access roles.
+Cloud Firestore
+
+Cloud Firestore stores application data, including employee information, team assignments, and attendance records.
+
+The following examples illustrate possible data structures. They are documentation examples, not a guarantee that every field or collection exists in the current database.
+
+Users Collection
 
 {
   "uid": "firebase-auth-user-id",
@@ -321,97 +337,56 @@ Stores account information and access roles.
   "isActive": true
 }
 
-2. employees
-
-Stores employee profile information.
-
-{
-  "employeeId": "EMP001",
-  "name": "Employee Name",
-  "designation": "Executive",
-  "teamId": "TEAM001",
-  "teamLeadId": "TL001",
-  "isActive": true
-}
-
-3. teams
-
-Stores team information and team leader assignments.
-
-{
-  "teamId": "TEAM001",
-  "teamName": "Sales Team A",
-  "teamLeadId": "TL001",
-  "isActive": true
-}
-
-4. attendance
-
-Stores daily attendance records.
+Attendance Record
 
 {
   "employeeId": "EMP001",
   "teamId": "TEAM001",
   "date": "2026-10-14",
   "checkIn": "Firestore Timestamp",
-  "checkOut": null,
-  "status": "present",
-  "isLate": false,
-  "workingHours": null,
+  "status": "pending",
   "latitude": 23.8103,
   "longitude": 90.4125,
   "locationAccuracy": 15.0
 }
 
-The example coordinates are illustrative only. Use actual location data only with appropriate permission.
+The example coordinates are illustrative and must not be interpreted as actual employee location data.
 
-In a production implementation, store timestamps using Firestore Timestamp values rather than the descriptive placeholder above. Store location fields only when enabled and authorized.
+In production, use Firestore Timestamp values for timestamps and validate all fields. Include location information only when permitted and needed.
 
-5. attendance_sessions
-
-Recommended collection for QR attendance sessions.
+Teams Collection
 
 {
-  "sessionId": "SESSION001",
   "teamId": "TEAM001",
-  "createdBy": "team-leader-user-id",
-  "sessionType": "check_in",
-  "createdAt": "Firestore Timestamp",
-  "expiresAt": "Firestore Timestamp",
-  "isActive": true
+  "teamName": "Sales Team A",
+  "teamLeadId": "TL001"
 }
 
-A production QR code should use a validated session identifier or securely generated token. Do not rely on an employee-editable QR payload as proof of valid attendance.
+Recommended Data Practices
 
-6. departments
-
-Stores department information.
-
-7. leave_requests
-
-Stores leave requests and approval status, if leave management is implemented.
-
-8. settings
-
-Stores configurable attendance rules, working hours, grace periods, and other system settings where appropriate.
-
-Database design note: Use stable document IDs, validate all client-submitted fields, enforce role-based Firestore Security Rules, and prevent employees from modifying their own attendance timestamps or approval status without authorization.
+* Use stable document identifiers.
+* Associate attendance records with the correct authenticated employee.
+* Keep employee identity and authorization information consistent.
+* Preserve historical attendance records when accounts are deactivated.
+* Restrict attendance approval and modification to authorized users.
+* Avoid storing unnecessary personal information.
 
 ⸻
 
-💻 Prerequisites
+💻 Installation and Setup
 
-Before running the project, install:
+Prerequisites
+
+Install the following tools:
 
 * Flutter SDK
-* Dart SDK compatible with the installed Flutter version
-* Android Studio or another supported development environment
-* Android SDK for Android development
-* Visual Studio with the required C++ workload if building a Windows desktop application
+* Dart SDK compatible with Flutter
+* Android Studio or another supported IDE
+* Android SDK for Android builds
 * Git
-* A Firebase project with the required services enabled
+* A Firebase project with Authentication and Cloud Firestore configured
 
-Check your Flutter environment:
+Verify your environment:
 
 flutter doctor
 
@@ -419,16 +394,12 @@ Check the installed Flutter version:
 
 flutter --version
 
-⸻
-
-🚀 Installation and Setup
-
 Step 1: Clone the Repository
 
 git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd surokkha_workforce
+cd surokkha_attendance
 
-Replace <YOUR_GITHUB_REPOSITORY_URL> with your actual repository URL.
+Replace the placeholder with the actual repository URL.
 
 Step 2: Install Dependencies
 
@@ -436,84 +407,57 @@ flutter pub get
 
 Step 3: Configure Firebase
 
-Configure the Firebase project as described in the Firebase Configuration section below.
+Configure the project using the Firebase Console and FlutterFire CLI.
 
-Step 4: Verify the Configuration
+Step 4: Run the Application
 
-flutter doctor
-flutter pub get
-
-Step 5: Run the Application
-
-Connect an Android device or start an emulator, then run:
+For Android:
 
 flutter run
 
-To list available devices:
+List available devices:
 
 flutter devices
 
-Step 6: Run the Web Application
-
-If the web target is configured:
+For web:
 
 flutter run -d chrome
 
-Step 7: Build the Android APK
-
-flutter build apk --release
-
-The generated APK is normally available at:
-
-build/app/outputs/flutter-apk/app-release.apk
-
-Step 8: Build for the Web
-
-flutter build web --release
-
-The generated web files are normally available in:
-
-build/web/
+The web build requires the web platform to be configured correctly.
 
 ⸻
 
-🔥 Firebase Configuration
+🔧 Firebase Configuration
 
-1. Create or Select a Firebase Project
+1. Select the Firebase Project
 
-Open the Firebase Console and select the Firebase project associated with the application.
+Open the Firebase Console and select the Firebase project associated with SUROKKHA Attendance.
 
 2. Enable Authentication
 
-1. Open Authentication.
+Enable the authentication method used by the application. For Email/Password authentication:
+
+1. Open Firebase Authentication.
 2. Select Sign-in method.
-3. Enable Email/Password authentication.
+3. Enable Email/Password.
 
-3. Create the Firestore Database
+3. Configure Cloud Firestore
 
-1. Open Firestore Database.
-2. Create or select the database.
-3. Configure the database for the intended environment.
-4. Apply restrictive Firestore Security Rules before production use.
+Verify that the intended Firestore database exists and that the application is configured to use the correct Firebase project.
 
 4. Configure FlutterFire
 
-Install the Firebase CLI and FlutterFire CLI if they are not already installed.
+If Firebase configuration needs to be generated or updated, run:
 
 firebase login
 dart pub global activate flutterfire_cli
-
-From the project directory, run:
-
 flutterfire configure
 
-Select the correct Firebase project and register the required platforms.
-
-This command generates or updates lib/firebase_options.dart for the selected configuration.
+Select the correct Firebase project and the platforms used by the application.
 
 5. Initialize Firebase
 
-Initialize Firebase in main.dart before using Firebase services. A typical setup is:
+A typical Firebase initialization in lib/main.dart looks like this:
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -526,93 +470,79 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-Replace MyApp with the actual root widget in your application.
+Replace MyApp with the actual root widget if it has a different name.
 
-6. Firebase Security
-
-* Use Firebase Authentication to identify users.
-* Apply Firestore Security Rules that validate user identity, role, and team membership.
-* Restrict employee, team leader, and HR permissions appropriately.
-* Do not expose service-account private keys or privileged credentials in the Flutter application.
-* Never deploy production data with unrestricted Firestore read/write rules.
-* Validate sensitive attendance operations on a trusted backend where necessary.
+Do not overwrite a working Firebase configuration without checking the current project setup.
 
 ⸻
 
-📊 Attendance Reports and Excel Export
+📱 Building the Application
 
-The attendance reporting module is intended to support monthly and date-wise reporting.
+Build Android APK
 
-Recommended report columns:
+flutter build apk --release
 
-Column	Description
+The APK is normally generated at:
+
+build/app/outputs/flutter-apk/app-release.apk
+
+Build Flutter Web
+
+flutter build web --release
+
+The generated web files are normally available in:
+
+build/web/
+
+Deploy the web build through the configured hosting service. For production deployment, use HTTPS and restrict access to authorized users and data.
+
+⸻
+
+📊 Attendance Records and Reporting
+
+The attendance system is intended to support centralized recordkeeping and administrative reporting.
+
+Recommended report fields include:
+
+Field	Description
 Employee Name	Full employee name
 Employee ID	Unique employee identifier
-Designation	Employee designation
-Reporting Time	Check-in timestamp
-Check-Out Time	Check-out timestamp
-Attendance Status	Present, absent, late, or another configured status
+Designation	Employee job title
+Date	Attendance date
+Check-In Time	Recorded reporting time
+Check-Out Time	Recorded checkout time, where available
+Attendance Status	Pending, approved, rejected, or other configured statuses
 Team Name	Assigned team
-Team Leader Name	Assigned team leader
-Working Hours	Calculated duration when available
+Team Lead	Assigned team leader
+Location	Recorded coordinates or map link, where permitted
 
-Recommended reporting capabilities:
-
-* Daily attendance report.
-* Monthly attendance report.
-* Team-wise attendance report.
-* Employee-wise attendance history.
-* Missing check-out report.
-* Late arrival report.
-* Excel export for administrative use.
-
-Ensure that date filters, working-hour calculations, time zones, and attendance corrections follow consistent business rules.
+Reports should use consistent date and time formats. Monthly calculations should account for missing attendance events, incomplete records, approved corrections, and the organization’s attendance policy.
 
 ⸻
 
-🔒 Security Considerations
+🔐 Security and Data Integrity
 
-Employee attendance data is sensitive organizational information. The following safeguards should be implemented before production deployment.
+Employee attendance records must be protected against unauthorized access and modification.
 
-* Authentication: Require authorized sign-in.
-* Authorization: Enforce role-based access control.
-* QR validation: Validate session authenticity, expiration, team membership, and permitted attendance actions.
-* Replay protection: Prevent repeated use of the same attendance session or duplicate check-in requests where applicable.
-* Location privacy: Request location access only when needed and explain its purpose.
-* Data integrity: Prevent unauthorized edits to check-in/check-out times and attendance status.
-* Auditability: Record authorized administrative corrections and relevant changes.
-* Employee deactivation: Preserve historical attendance records when an employee account is deactivated.
-* Data protection: Avoid exposing personal information in application logs or public repositories.
-* Production rules: Test Firestore Security Rules using the Firebase Emulator Suite or an equivalent controlled test process.
+* Require authentication for protected application functions.
+* Apply role-based authorization for employees, Team Leads, and HR/Admin.
+* Restrict users to the records they are authorized to access.
+* Prevent employees from modifying their own approval status.
+* Validate attendance submissions and timestamps.
+* Prevent duplicate or invalid attendance submissions where applicable.
+* Validate location data without treating GPS coordinates as definitive proof of physical presence.
+* Maintain an audit trail for administrative corrections where supported.
+* Never publish Firebase service-account credentials or other private secrets in the repository.
+* Test Firebase Security Rules before deploying production changes.
+* Preserve historical attendance records according to the organization’s retention requirements.
 
-A QR code and a GPS coordinate should not be treated as complete proof of identity or physical presence. Stronger verification may be needed depending on organizational requirements.
-
-⸻
-
-🛣️ Future Enhancements
-
-Potential future improvements include:
-
-* [ ]	Dedicated HR web dashboard.
-* [ ]	Advanced employee and team management.
-* [ ]	Configurable attendance schedules and grace periods.
-* [ ]	Secure, expiring QR attendance sessions.
-* [ ]	Server-side attendance validation.
-* [ ]	Enhanced location verification.
-* [ ]	Attendance correction and approval workflows.
-* [ ]	Leave management.
-* [ ]	Automated monthly Excel reports.
-* [ ]	Notifications for missing check-out and attendance exceptions.
-* [ ]	Audit logs for administrative actions.
-* [ ]	Employee attendance analytics.
-* [ ]	Automated backup and recovery procedures.
-* [ ]	Comprehensive unit, integration, and security tests.
+The presence of Firebase Authentication alone does not secure Firestore data. Proper Security Rules and trusted validation logic are also required.
 
 ⸻
 
 🧪 Testing
 
-Run Flutter static analysis:
+Run static analysis:
 
 flutter analyze
 
@@ -620,92 +550,107 @@ Run automated tests:
 
 flutter test
 
-Before release, test the following scenarios:
+Important scenarios to test include:
 
-* Valid and invalid login attempts.
-* Employee, team leader, and HR access permissions.
-* Expired and invalid QR sessions.
-* Duplicate check-in attempts.
-* Missing checkout records.
-* Denied location permission.
+* Successful and unsuccessful authentication.
+* Employee and Team Lead attendance submission.
+* Location permission granted or denied.
+* Missing or inaccurate GPS readings.
+* Attendance approval and rejection.
+* Unauthorized access to other employees’ records.
+* Duplicate submissions.
 * Network interruptions during attendance submission.
-* Incorrect or unauthorized team assignments.
-* Excel export accuracy.
-* Employee deactivation and historical record preservation.
+* Historical records for deactivated employees.
+* Attendance reporting accuracy.
+
+⸻
+
+🛣️ Future Enhancements
+
+Potential improvements include:
+
+* [ ]	Complete HR/Admin and Super Admin management workflows.
+* [ ]	Enhanced role-based security and Firestore Security Rules.
+* [ ]	Advanced monthly Excel reporting.
+* [ ]	Attendance correction requests and audit logs.
+* [ ]	Automated attendance summaries.
+* [ ]	Notifications for pending attendance reviews.
+* [ ]	Improved GPS verification and location accuracy handling.
+* [ ]	Automated backup and recovery procedures.
+* [ ]	Expanded automated testing and production monitoring.
+
+These items should be treated as future enhancements only if they are not already implemented.
 
 ⸻
 
 🛠️ Troubleshooting
 
-Firebase initialization error
+Firebase Initialization Error
 
-Check that Firebase is configured for the selected platform and that firebase_options.dart exists and matches the intended project.
+Verify the Firebase project configuration and the presence of firebase_options.dart.
 
 flutterfire configure
 flutter pub get
 
-Dependency errors
+Firestore Permission Denied
+
+Check authentication status, user roles, team assignments, and Firestore Security Rules. Do not resolve permission errors by allowing unrestricted public access.
+
+Location Not Available
+
+Check device location settings, runtime permissions, GPS availability, and network connectivity.
+
+Dependency Issues
 
 Try:
 
 flutter clean
 flutter pub get
 
-Location permission errors
+Web Application Issues
 
-Check Android and iOS permission declarations, device settings, and runtime permission handling.
-
-QR scanner errors
-
-Verify camera permissions, supported platform configuration, and the QR scanning package setup.
-
-Firestore permission errors
-
-Review Firebase Authentication status, document ownership, team assignments, and Firestore Security Rules. Do not solve permission errors by making the database publicly writable.
-
-Web build errors
-
-Confirm that the required web packages are compatible and that Firebase is configured for the web application.
+Verify Firebase web configuration, supported package versions, browser permissions, and HTTPS deployment settings.
 
 ⸻
 
 🤝 Contributing
 
-Contributions, bug reports, and suggestions are welcome.
+Contributions and bug reports should follow the project’s development and review process.
 
-1. Fork the repository.
-2. Create a feature branch.
-3. Implement and test your changes.
-4. Run flutter analyze and flutter test.
-5. Submit a pull request describing the changes.
+1. Fork or clone the repository with appropriate permission.
+2. Create a separate feature branch.
+3. Implement the changes.
+4. Run static analysis and tests.
+5. Submit a pull request with a clear description of the changes.
 
-Suggested branch naming:
+Example branch names:
 
-feature/qr-attendance
-feature/excel-export
-fix/attendance-validation
+feature/attendance-history
+feature/excel-reporting
+fix/location-validation
 
 ⸻
 
 📄 License
 
-This project is developed for employee attendance management at SUROKKHA HEALTH.
+This project is developed for SUROKKHA HEALTH.
 
-The applicable license and redistribution permissions should be defined by the project owner before the source code is publicly distributed.
+The applicable license and redistribution permissions should be determined by the project owner. Do not redistribute proprietary source code or company data without authorization.
 
 ⸻
 
 📞 Contact
 
-Project: SUROKKHA WORKFORCE — Attendance Portal
+Project: SUROKKHA Attendance Portal
 Organization: SUROKKHA HEALTH
 Technology: Flutter, Dart, Firebase
 Purpose: Employee Attendance and Workforce Management
 
-For project-related inquiries, contact the project administrator or the authorized SUROKKHA HEALTH technical team.
+For project-related inquiries, contact the authorized project administrator or SUROKKHA HEALTH technical team.
 
 ⸻
 
 <p align="center">
-  <strong>Built to make workforce attendance simpler, smarter, and more transparent.</strong>
+  <strong>SUROKKHA ATTENDANCE PORTAL</strong><br/>
+  Simplifying Employee Attendance and Workforce Management
 </p>
