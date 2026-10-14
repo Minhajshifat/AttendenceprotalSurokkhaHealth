@@ -83,16 +83,8 @@ The system is designed for organizations managing approximately 11–50 employee
 * User profile and employee identification.
 * Access restrictions based on user roles.
 
-2. 📱 QR Code Attendance
 
-* Team leaders can generate QR codes for attendance sessions.
-* Employees scan QR codes to submit attendance.
-* QR codes can be configured with a validity period.
-* Attendance sessions can be associated with a team and authorized team leader.
-* Check-in and check-out events can be recorded separately.
-* Duplicate or invalid attendance submissions should be rejected by server-side validation.
-
-3. 📍 Location-Aware Attendance
+2. 📍 Location-Aware Attendance
 
 * Capture the employee’s device location when submitting attendance, subject to permission.
 * Store latitude and longitude with attendance records when enabled.
@@ -102,7 +94,7 @@ The system is designed for organizations managing approximately 11–50 employee
 
 Note: GPS coordinates alone do not guarantee that an employee is physically present at a claimed location. Additional verification and server-side validation may be required.
 
-4. 👥 Employee and Team Management
+3. 👥 Employee and Team Management
 
 * Maintain employee profiles and employee IDs.
 * Organize employees into teams and departments.
@@ -110,7 +102,7 @@ Note: GPS coordinates alone do not guarantee that an employee is physically pres
 * Associate attendance sessions with the appropriate teams.
 * Manage employee account status and role permissions.
 
-5. 📊 Attendance Dashboard
+4. 📊 Attendance Dashboard
 
 The dashboard is intended to provide an overview of:
 
@@ -124,7 +116,7 @@ The dashboard is intended to provide an overview of:
 
 Dashboard figures depend on the attendance records and calculation rules configured in the application.
 
-6. 🗓️ Attendance History
+5. 🗓️ Attendance History
 
 * View daily attendance records.
 * Filter records by date, employee, or team.
@@ -132,7 +124,7 @@ Dashboard figures depend on the attendance records and calculation rules configu
 * Identify incomplete attendance records.
 * Maintain historical attendance data for reporting.
 
-7. 📥 Excel Attendance Reports
+6. 📥 Excel Attendance Reports
 
 * Export attendance records to Excel.
 * Generate date-wise and employee-wise reports.
@@ -142,7 +134,7 @@ Dashboard figures depend on the attendance records and calculation rules configu
 
 Excel export availability depends on the implementation of the reporting module.
 
-8. 🧑‍💼 HR and Management Controls
+7. 🧑‍💼 HR and Management Controls
 
 * Review attendance records.
 * Monitor team attendance.
@@ -150,7 +142,7 @@ Excel export availability depends on the implementation of the reporting module.
 * Review exceptional or incomplete records.
 * Maintain centralized reporting for management.
 
-9. ☁️ Cloud-Based Data Management
+8. ☁️ Cloud-Based Data Management
 
 * Firebase Authentication for identity management.
 * Cloud Firestore for application data.
