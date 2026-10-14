@@ -1,0 +1,53 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "surokkha-attendance",
+          "appId": "1:79804083474:android:967fe2c3b4ab67103f57cb",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "surokkha-attendance",
+          "configurations": {
+            "android": "1:79804083474:android:967fe2c3b4ab67103f57cb",
+            "ios": "1:79804083474:ios:87d4eba3de5440993f57cb",
+            "macos": "1:79804083474:ios:87d4eba3de5440993f57cb",
+            "web": "1:79804083474:web:5e32efd062f00b063f57cb",
+            "windows": "1:79804083474:web:67308d4d9a167c663f57cb"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "disallowLegacyRuntimeConfig": true,
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ],
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

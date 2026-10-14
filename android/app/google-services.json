@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79804083474",
+    "project_id": "surokkha-attendance",
+    "storage_bucket": "surokkha-attendance.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79804083474:android:967fe2c3b4ab67103f57cb",
+        "android_client_info": {
+          "package_name": "com.example.surokkha_attendance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxZh-AP0djx9dBvcyVuPzXHo9MBM2tAyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

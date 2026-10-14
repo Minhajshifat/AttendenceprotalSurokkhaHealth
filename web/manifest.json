@@ -1,0 +1,11 @@
+{
+  "name": "Surokkha Attendance",
+  "short_name": "Surokkha Attendance",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
